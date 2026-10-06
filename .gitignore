@@ -1,0 +1,8 @@
+data/
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+artifacts/*.png
+artifacts/*.mp4
+artifacts/*.log
