@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": [
+    "generated video processed with actual candidates",
+    "candidate import into editable pitch",
+    "manual joint angle and image zone",
+    "projected speed calibration",
+    "persistent annotations",
+    "CSV download",
+    "actual annotated MP4 render and download",
+    "reload persistence",
+    "390px mobile layout without overflow",
+    "real file upload path"
+  ],
+  "console_errors": [],
+  "viewports": [
+    "1536x1100",
+    "390x844"
+  ]
+}
