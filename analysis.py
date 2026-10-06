@@ -40,7 +40,7 @@ def inspect_video(path,progress=lambda v:None):
             ok,frame=cap.read()
             if not ok:break
             if n>=7200 or n/fps>=60:raise ValueError('Decoded clip exceeds processing limit')
-            h0,w0=frame.shape[:2];w= min(w0,960);h=round(h0*w/w0);frame=cv2.resize(frame,(w,h));gray=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+            h0,w0=frame.shape[:2];scale=min(1,960/max(w0,h0));w=max(2,int(w0*scale)//2*2);h=max(2,int(h0*scale)//2*2);frame=cv2.resize(frame,(w,h));gray=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
             candidate=None
             if previous is not None:
                 diff=cv2.absdiff(gray,previous);mask=cv2.inRange(frame,(185,185,185),(255,255,255));mask[diff<18]=0

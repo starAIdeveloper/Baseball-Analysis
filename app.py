@@ -40,10 +40,11 @@ class Review(BaseModel):
         import math
         coordinates=[p.point for pitch in self.pitches for p in pitch.points]+[p for pose in self.poses for p in pose.points]+(self.calibration.points if self.calibration else [])
         for p in coordinates:
-            if len(p)!=2 or any(not math.isfinite(v) or not 0<=v<=1 for v in p):raise ValueError('Coordinates must be finite image-width normalized points')
+            if len(p)!=2 or any(not math.isfinite(v) for v in p) or not 0<=p[0]<=1 or p[1]<0:raise ValueError('Coordinates must be finite image-width normalized points')
         if self.zone is not None:
-            if len(self.zone)!=4 or any(not math.isfinite(v) or not 0<=v<=1 for v in self.zone) or self.zone[0]>=self.zone[2] or self.zone[1]>=self.zone[3]:raise ValueError('Invalid zone rectangle')
+            if len(self.zone)!=4 or any(not math.isfinite(v) or v<0 for v in self.zone) or self.zone[0]>1 or self.zone[2]>1 or self.zone[0]>=self.zone[2] or self.zone[1]>=self.zone[3]:raise ValueError('Invalid zone rectangle')
         if len({p.id for p in self.pitches})!=len(self.pitches):raise ValueError('Pitch IDs must be unique')
+        if self.calibration and math.dist(*self.calibration.points)<.005:raise ValueError('Calibration points are too close')
         for p in self.pitches:pitch_metrics(p.model_dump(),self.calibration.model_dump() if self.calibration else None,self.zone)
         return self
 
