@@ -2,6 +2,8 @@
 
 A working, local baseball video review lab inspired by ball-trajectory, strike-zone and biomechanics visualization references. It combines an actual OpenCV candidate extractor with editable annotations, image-plane measurements and annotated video exports.
 
+![Pitch trajectory and full-body pose visualization](docs/reference/baseball-analyze-3.png)
+
 ## Visual reference gallery
 
 User-supplied concept artwork illustrating baseball tracking and analysis ideas. These visuals are references, not screenshots or measured outputs from the current application.
@@ -25,14 +27,6 @@ User-supplied concept artwork illustrating baseball tracking and analysis ideas.
 ### Swing mechanics and ball-flight analysis
 
 ![Swing mechanics and ball-flight analysis](docs/reference/baseball-analyze-5.png)
-
-## Preview and local verification
-
-![Pitch review dashboard](artifacts/desktop.webp)
-
-[Mobile view](artifacts/mobile.webp) · [Browser check report](artifacts/browser-report.json)
-
-Local validation passed 12 backend tests and the browser checks described below. The eight-second generated fixture produced 171 candidate observations. This is fixture behavior, not a real-footage accuracy metric.
 
 ## Run
 
